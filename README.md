@@ -16,21 +16,23 @@ and displays colorized responses. HTTPie can be used for testing, debugging, and
 
 ## Install
 
-This docker image is available as a [trusted build on the docker index](https://index.docker.io/u/clue/httpie/),
+This docker image is available as a [trusted build on the docker index](https://registry.hub.docker.com/u/menghan/httpie/),
 so using it is as simple as running:
 
 ```bash
-$ docker run clue/httpie
+$ docker run menghan/httpie
 ```
 
 Running this command for the first time will download the image automatically.
 Further runs will be immediate, as the image will be cached locally.
 
 To further ease running, it's recommended to set up a much shorter `alias`
-so that you can easily execute it as just `http`:
+so that you can easily execute it as just `http`.  For command that reads
+stdin, you can execute it as `httpi`.
 
 ```bash
-$ alias http='docker run -it --rm --net=host clue/httpie'
+$ alias http='docker run -t --rm --net=host menghan/httpie'
+$ alias httpi='docker run -i --rm --net=host menghan/httpie'
 ```
 
 This will create a temporary alias. In order to make it persist reboots,
@@ -38,6 +40,7 @@ you can append this exact line to your `~/.bashrc` (or similar) like this:
 
 ```bash
 $ alias http >> ~/.bashrc
+$ alias httpi >> ~/.bashrc
 ```
 
 ## Usage
